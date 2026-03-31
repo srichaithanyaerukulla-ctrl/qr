@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Free QR Code Generator — QRCraft | No Signup, Instant Download</title>
+<meta name="description" content="Generate free QR codes instantly for URLs, text, email, phone, and Wi-Fi. No signup required. Download as PNG. 100% free forever."/>
+<meta name="keywords" content="qr code generator, free qr code, qr code maker, wifi qr code, url qr code"/>
+<meta property="og:title" content="QRCraft — Free QR Code Generator"/>
+<meta property="og:description" content="Generate beautiful QR codes for free. No signup, instant download."/>
+<meta name="robots" content="index, follow"/>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2803860252393750" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d0f14;--bg2:#13161e;--card:#181c26;--border:#252a38;--gold:#c9a96e;--gold2:#e8c98a;--text:#eef0f6;--muted:#7a8098;--success:#3ecf8e}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,110,247,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(201,169,110,.07) 0%,transparent 70%);pointer-events:none;z-index:0}
+
+nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 3rem;border-bottom:1px solid var(--border)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.02em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+@media(max-width:600px){nav{padding:1.2rem 1.2rem}.nav-links{display:none}}
+
+.ad-wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:1rem 1.5rem;text-align:center}
+.ad-label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;opacity:.5}
+
+.hero{position:relative;z-index:1;text-align:center;padding:4rem 2rem 2.5rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);padding:.4rem 1rem;border-radius:100px;margin-bottom:1.6rem;animation:fadeUp .6s ease both}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem;animation:fadeUp .6s ease .1s both}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:1rem;color:var(--muted);font-weight:300;max-width:480px;margin:0 auto 2rem;line-height:1.7;animation:fadeUp .6s ease .2s both}
+
+.stats-row{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:900px;margin:0 auto 1.5rem;padding:0 1.5rem;animation:fadeUp .6s ease .4s both}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-label{font-size:.72rem;color:var(--muted);margin-top:.3rem;letter-spacing:.05em}
+
+.main-container{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 1.5rem 2rem;display:grid;grid-template-columns:1fr 340px;gap:1.5rem;animation:fadeUp .7s ease .3s both}
+@media(max-width:720px){.main-container{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.card-title{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;display:flex;align-items:center;gap:.6rem}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.field{margin-bottom:1.3rem}
+label{display:block;font-size:.82rem;font-weight:500;color:var(--muted);margin-bottom:.45rem;letter-spacing:.03em}
+input[type=text],select,textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.82rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.92rem;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,.12)}
+input::placeholder,textarea::placeholder{color:#3d4258}
+textarea{resize:vertical;min-height:80px}
+select option{background:var(--bg2)}
+
+.color-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.color-field{display:flex;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.6rem .9rem;gap:.7rem;transition:border-color .2s}
+.color-field:focus-within{border-color:var(--gold)}
+input[type=color]{width:26px;height:26px;border:none;background:none;cursor:pointer;padding:0;border-radius:6px;outline:none}
+.color-label-text{font-size:.8rem;color:var(--muted)}
+
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:4px;background:var(--border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--bg);box-shadow:0 0 8px rgba(201,169,110,.4)}
+.slider-row{display:flex;align-items:center;gap:1rem}
+
+.btn-generate{width:100%;padding:1rem;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0d0f14;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.94rem;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:transform .15s,box-shadow .2s;margin-top:.4rem;position:relative;overflow:hidden}
+.btn-generate::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .2s}
+.btn-generate:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(201,169,110,.35)}
+.btn-generate:hover::before{opacity:1}
+.btn-generate:active{transform:translateY(0)}
+
+.qr-panel{display:flex;flex-direction:column;gap:1rem}
+.qr-display-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;position:relative;overflow:hidden}
+.qr-display-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,169,110,.06),transparent 70%);pointer-events:none}
+#qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:1rem;opacity:.3}
+.placeholder-grid{width:100px;height:100px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.placeholder-grid div{border-radius:2px;background:var(--muted);animation:dotFade 1.8s ease-in-out infinite}
+.placeholder-grid div:nth-child(even){animation-delay:.4s}
+.placeholder-grid div:nth-child(3n){animation-delay:.8s}
+.placeholder-text{font-size:.75rem;color:var(--muted);letter-spacing:.1em}
+#qr-output{display:none;position:relative;z-index:1}
+#qr-output canvas,#qr-output img{border-radius:8px;display:block}
+.qr-success-badge{display:none;align-items:center;gap:.5rem;font-size:.73rem;font-weight:500;color:var(--success);background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.2);padding:.35rem .9rem;border-radius:100px;margin-top:1rem;position:relative;z-index:1}
+
+.download-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+.download-btns{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.5rem}
+.btn-dl{padding:.75rem .5rem;border-radius:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.btn-dl:hover{background:var(--border);border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+.btn-dl:disabled{opacity:.3;cursor:not-allowed;transform:none}
+
+.seo-section{position:relative;z-index:1;max-width:900px;margin:1rem auto 0;padding:0 1.5rem}
+.seo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+@media(max-width:640px){.seo-grid{grid-template-columns:1fr}}
+.seo-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.seo-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:.7rem}
+.seo-card p,.seo-card li{font-size:.85rem;color:var(--muted);line-height:1.7}
+.seo-card ul{padding-left:1.1rem}
+.seo-card li{margin-bottom:.3rem}
+.seo-icon{font-size:1.4rem;margin-bottom:.6rem;display:block}
+
+.faq-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.5rem}
+.faq-wrap h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:1.4rem}
+.faq-item{border-top:1px solid var(--border);padding:1rem 0}
+.faq-item:first-of-type{border-top:none;padding-top:0}
+.faq-q{font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+.faq-a{font-size:.84rem;color:var(--muted);line-height:1.7}
+
+footer{position:relative;z-index:1;text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);margin-top:1rem}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:.8rem;flex-wrap:wrap}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:.75rem;color:var(--muted)}
+.footer-copy span{color:var(--gold)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dotFade{0%,100%{opacity:.1}50%{opacity:.6}}
+@keyframes popIn{0%{transform:scale(.85);opacity:0}70%{transform:scale(1.04);opacity:1}100%{transform:scale(1)}}
+.pop-in{animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">QR<span>Craft</span></div>
+  <div class="nav-links">
+    <a href="#how-to">How to Use</a>
+    <a href="#faq">FAQ</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- TOP AD -->
+<div class="ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2803860252393750" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">✦ 100% Free · No Signup · No Data Stored</div>
+  <h1>Generate <em>Beautiful</em><br>QR Codes Instantly</h1>
+  <p>Create QR codes for URLs, text, email, phone, and Wi-Fi. Download free — no account needed, ever.</p>
+</section>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Free Generations</div></div>
+  <div class="stat-card"><div class="stat-num">0</div><div class="stat-label">Data Collected</div></div>
+  <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">QR Code Types</div></div>
+</div>
+
+<div class="main-container">
+  <div class="card">
+    <div class="card-title">Configuration</div>
+    <div class="field">
+      <label>Content Type</label>
+      <select id="content-type" onchange="updatePlaceholder()">
+        <option value="url">Website URL</option>
+        <option value="text">Plain Text</option>
+        <option value="email">Email Address</option>
+        <option value="phone">Phone Number</option>
+        <option value="wifi">Wi-Fi Network</option>
+      </select>
+    </div>
+    <div class="field" id="main-input-field">
+      <label id="input-label">Enter URL</label>
+      <textarea id="qr-input" placeholder="https://example.com" rows="3"></textarea>
+    </div>
+    <div id="wifi-fields" style="display:none">
+      <div class="field"><label>Network Name (SSID)</label><input type="text" id="wifi-ssid" placeholder="MyNetwork"/></div>
+      <div class="field"><label>Password</label><input type="text" id="wifi-pass" placeholder="password123"/></div>
+      <div class="field"><label>Security</label><select id="wifi-sec"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="">None</option></select></div>
+    </div>
+    <div class="color-row" style="margin-bottom:1.3rem">
+      <div><label>Foreground Color</label><div class="color-field"><input type="color" id="fg-color" value="#0d0f14"/><span class="color-label-text">Dot Color</span></div></div>
+      <div><label>Background Color</label><div class="color-field"><input type="color" id="bg-color" value="#ffffff"/><span class="color-label-text">BG Color</span></div></div>
+    </div>
+    <div class="field">
+      <label>Size — <span id="size-display">256px</span></label>
+      <div class="slider-row"><input type="range" id="qr-size" min="128" max="512" step="32" value="256" oninput="document.getElementById('size-display').textContent=this.value+'px'"/></div>
+    </div>
+    <div class="field">
+      <label>Error Correction Level</label>
+      <select id="error-level">
+        <option value="L">L — Low (7%) · Smaller file</option>
+        <option value="M" selected>M — Medium (15%) · Recommended</option>
+        <option value="Q">Q — Quartile (25%)</option>
+        <option value="H">H — High (30%) · Most durable</option>
+      </select>
+    </div>
+    <button class="btn-generate" onclick="generateQR()">⬡ Generate QR Code</button>
+  </div>
+
+  <div class="qr-panel">
+    <div class="qr-display-card">
+      <div id="qr-placeholder">
+        <div class="placeholder-grid" id="placeholder-dots"></div>
+        <div class="placeholder-text">PREVIEW APPEARS HERE</div>
+      </div>
+      <div id="qr-output"></div>
+      <div class="qr-success-badge" id="success-badge">✓ Ready to Download</div>
+    </div>
+    <div class="download-card">
+      <div class="card-title">Export</div>
+      <div class="download-btns">
+        <button class="btn-dl" id="btn-png" onclick="downloadPNG()" disabled>↓ PNG</button>
+        <button class="btn-dl" id="btn-svg" onclick="downloadSVG()" disabled>↓ SVG</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MIDDLE AD -->
+<div class="ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2803860252393750" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+</div>
+
+<section class="seo-section" id="how-to">
+  <div class="seo-grid">
+    <div class="seo-card">
+      <span class="seo-icon">🔗</span>
+      <h3>What is a QR Code?</h3>
+      <p>A QR (Quick Response) code is a 2D barcode that stores information like URLs, text, or contact details. Any smartphone camera can scan it instantly — no app needed.</p>
+    </div>
+    <div class="seo-card">
+      <span class="seo-icon">⚡</span>
+      <h3>How to Use QRCraft</h3>
+      <ul>
+        <li>Choose your content type</li>
+        <li>Enter your URL, text, or details</li>
+        <li>Customize colors and size</li>
+        <li>Click Generate and download</li>
+      </ul>
+    </div>
+    <div class="seo-card">
+      <span class="seo-icon">✅</span>
+      <h3>Why QRCraft?</h3>
+      <ul>
+        <li>100% free, no hidden fees</li>
+        <li>No account required</li>
+        <li>Works entirely in your browser</li>
+        <li>Your data never leaves your device</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-wrap" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Are the QR codes free to use commercially?</div>
+      <div class="faq-a">Yes. All QR codes generated on QRCraft are completely free — personal or commercial use, no restrictions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do QR codes expire?</div>
+      <div class="faq-a">QR codes generated here are static — they never expire. The code will always point to the exact content you encoded.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What error correction level should I use?</div>
+      <div class="faq-a">Medium (M) is recommended for most uses. Use High (H) if the QR code will be printed and may get damaged, like on packaging or outdoor signage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my data stored anywhere?</div>
+      <div class="faq-a">No. QRCraft runs 100% in your browser. Your content is never sent to any server or stored anywhere.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">PNG vs SVG — which should I download?</div>
+      <div class="faq-a">PNG is great for digital use and standard printing. SVG is a vector format — ideal if you need to scale up for large print without losing quality.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM AD -->
+<div class="ad-wrap">
+  <div class="ad-label">Advertisement</div>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2803860252393750" data-ad-slot="3333333333" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="#how-to">How It Works</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="footer-copy">© 2025 <span>QRCraft</span> · Free QR Code Generator · No signup required</div>
+</footer>
+
+<script>
+const grid=document.getElementById('placeholder-dots');
+for(let i=0;i<25;i++){const d=document.createElement('div');grid.appendChild(d)}
+
+const errMap={L:QRCode.CorrectLevel.L,M:QRCode.CorrectLevel.M,Q:QRCode.CorrectLevel.Q,H:QRCode.CorrectLevel.H};
+
+function updatePlaceholder(){
+  const type=document.getElementById('content-type').value;
+  const map={
+    url:{label:'Enter URL',ph:'https://yourwebsite.com',show:true},
+    text:{label:'Enter Text',ph:'Hello, World!',show:true},
+    email:{label:'Email Address',ph:'hello@example.com',show:true},
+    phone:{label:'Phone Number',ph:'+1 555 000 0000',show:true},
+    wifi:{label:'Wi-Fi Setup',ph:'',show:false}
+  };
+  const cfg=map[type];
+  document.getElementById('input-label').textContent=cfg.label;
+  document.getElementById('qr-input').placeholder=cfg.ph;
+  document.getElementById('main-input-field').style.display=cfg.show?'':'none';
+  document.getElementById('wifi-fields').style.display=type==='wifi'?'':'none';
+}
+
+function buildContent(){
+  const type=document.getElementById('content-type').value;
+  const raw=document.getElementById('qr-input').value.trim();
+  if(type==='wifi'){
+    const ssid=document.getElementById('wifi-ssid').value;
+    const pass=document.getElementById('wifi-pass').value;
+    const sec=document.getElementById('wifi-sec').value;
+    return 'WIFI:T:'+sec+';S:'+ssid+';P:'+pass+';;';
+  }
+  if(type==='email') return raw.includes('mailto:')?raw:'mailto:'+raw;
+  if(type==='phone') return raw.includes('tel:')?raw:'tel:'+raw.replace(/\s/g,'');
+  if(type==='url') return raw.match(/^https?:\/\//)?raw:'https://'+raw;
+  return raw;
+}
+
+function generateQR(){
+  const content=buildContent();
+  if(!content||content==='https://'){alert('Please enter some content first.');return}
+  const size=parseInt(document.getElementById('qr-size').value);
+  const fg=document.getElementById('fg-color').value;
+  const bg=document.getElementById('bg-color').value;
+  const level=document.getElementById('error-level').value;
+  const output=document.getElementById('qr-output');
+  output.innerHTML='';
+  new QRCode(output,{text:content,width:size,height:size,colorDark:fg,colorLight:bg,correctLevel:errMap[level]});
+  document.getElementById('qr-placeholder').style.display='none';
+  output.style.display='block';
+  output.classList.remove('pop-in');
+  void output.offsetWidth;
+  output.classList.add('pop-in');
+  document.getElementById('success-badge').style.display='flex';
+  document.getElementById('btn-png').disabled=false;
+  document.getElementById('btn-svg').disabled=false;
+}
+
+function getCanvas(){return document.querySelector('#qr-output canvas')}
+
+function downloadPNG(){
+  const c=getCanvas();if(!c)return;
+  const a=document.createElement('a');a.download='qrcraft-code.png';a.href=c.toDataURL('image/png');a.click();
+}
+
+function downloadSVG(){
+  const c=getCanvas();if(!c)return;
+  const s=c.width,d=c.toDataURL('image/png');
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+s+'" height="'+s+'"><image href="'+d+'" width="'+s+'" height="'+s+'"/></svg>';
+  const a=document.createElement('a');a.download='qrcraft-code.svg';
+  a.href=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));a.click();
+}
+</script>
+</body>
+</html>
